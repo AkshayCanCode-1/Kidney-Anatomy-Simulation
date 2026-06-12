@@ -16,6 +16,15 @@ export const kidneyParts = {
     side: "left",
     mainLabel: true,
     keywords: ["leftkidney", "left kidney", "kidney_l", "kidney.left", "lkidney", "renal_l"],
+    ta: {
+      name: "இடது சிறுநீரகம்",
+      shortLabel: "இடது சிறுநீரகம்",
+      definition: "இரத்தத்தை வடிகட்டி சிறுநீரை உருவாக்கும் அவரை விதை வடிவ உறுப்புகளில் ஒன்று.",
+      function: "இரத்தத்திலிருந்து யூரியா, கூடுதல் உப்புகள் மற்றும் அதிகப்படியான நீரைக் கொண்டு வெளியேற்றுகிறது.",
+      importance: "நீர் மற்றும் உப்பின் அளவைக் கட்டுப்படுத்துவதன் மூலம் உடலின் உள் சூழலைச் சமநிலையில் வைக்கிறது.",
+      class11Connection: "மனித உடலியலில் கழிவு நீக்கம், சவ்வூடுபரவல் ஒழுங்குபாடு மற்றும் சிறுநீர் உருவாக்கம்.",
+      memoryTip: "சிறுநீரகங்கள் உடலின் இயற்கை இரத்த வடிகட்டிகள் ஆகும்.",
+    }
   },
   rightKidney: {
     id: "rightKidney",
@@ -34,6 +43,15 @@ export const kidneyParts = {
     side: "right",
     mainLabel: true,
     keywords: ["rightkidney", "right kidney", "kidney_r", "kidney.right", "rkidney", "renal_r"],
+    ta: {
+      name: "வலது சிறுநீரகம்",
+      shortLabel: "வலது சிறுநீரகம்",
+      definition: "இடது சிறுநீரகத்தைப் போன்றே உடலின் வலது பக்கத்தில் உள்ள மற்றொரு சிறுநீரகம்.",
+      function: "தொடர்ந்து இரத்தத்தை வடிகட்டி சிறுநீர் உருவாக உதவுகிறது.",
+      importance: "இடது சிறுநீரகத்துடன் இணைந்து கழிவுகளை வெளியேற்றி இரத்தத்தின் கலவையைப் பராமரிக்கிறது.",
+      class11Connection: "இரு இணையாக இருக்கும் சிறுநீரக உறுப்புகள் உடலின் சமநிலைக்கு எவ்வாறு உதவுகின்றன என்பதைக் காட்டுகிறது.",
+      memoryTip: "இரண்டு சிறுநீரகங்கள் வடிகட்டும் வேலையை பகிர்ந்து கொள்கின்றன.",
+    }
   },
   renalArtery: {
     id: "renalArtery",
@@ -51,6 +69,15 @@ export const kidneyParts = {
     markerSize: 0.2,
     mainLabel: true,
     keywords: ["artery", "renal artery", "renalartery"],
+    ta: {
+      name: "சிறுநீரகத் தமனி",
+      shortLabel: "சிறுநீரகத் தமனி",
+      definition: "பெருந்தமனியிலிருந்து இரத்தத்தை சிறுநீரகத்திற்கு எடுத்துச் செல்லும் இரத்தக் குழாய்.",
+      function: "சுத்திகரிப்பதற்காக கழிவுகள் மற்றும் ஆக்ஸிஜன் நிறைந்த இரத்தத்தை சிறுநீரகத்திற்குள் கொண்டு வருகிறது.",
+      importance: "சிறுநீரகத்திற்கு இரத்தம் வந்தால்தான் வடிகட்டும் செயல்முறை தொடங்கும்.",
+      class11Connection: "இரத்த ஓட்ட மண்டலத்தை கழிவுநீக்க மண்டலத்துடன் இணைக்கிறது.",
+      memoryTip: "தமனி இரத்தத்தைக் கொண்டு வருகிறது (Arrives).",
+    }
   },
   renalVein: {
     id: "renalVein",
@@ -68,6 +95,15 @@ export const kidneyParts = {
     markerSize: 0.2,
     mainLabel: true,
     keywords: ["vein", "renal vein", "renalvein"],
+    ta: {
+      name: "சிறுநீரகச் சிரை",
+      shortLabel: "சிறுநீரகச் சிரை",
+      definition: "வடிகட்டப்பட்ட சுத்தமான இரத்தத்தைச் சிறுநீரகத்திலிருந்து வெளியே எடுத்துச் செல்லும் இரத்தக் குழாய்.",
+      function: "சுத்திகரிக்கப்பட்ட இரத்தத்தை மீண்டும் உடலின் முக்கிய சுழற்சிக்குக் கொண்டு செல்கிறது.",
+      importance: "சிறுநீரகத்தில் இரத்த வடிகட்டுதல் சுழற்சியை முழுமையாக்குகிறது.",
+      class11Connection: "கழிவு நீக்கத்தில் தமனி மற்றும் சிரையின் பாத்திரங்களை ஒப்பிட உதவுகிறது.",
+      memoryTip: "சிரை இரத்தத்தை வெளியேற்றுகிறது (Vacates).",
+    }
   },
   leftUreter: {
     id: "leftUreter",
@@ -86,6 +122,15 @@ export const kidneyParts = {
     side: "left",
     mainLabel: true,
     keywords: ["left ureter", "leftureter", "lureter", "l_ureter"],
+    ta: {
+      name: "இடது சிறுநீர்க்குழாய்",
+      shortLabel: "சிறுநீர்க்குழாய்",
+      definition: "இடது சிறுநீரகத்திலிருந்து சிறுநீர்ப்பைக்குச் சிறுநீரைக் கொண்டு செல்லும் குழாய்.",
+      function: "அலை போன்ற தசை இயக்கத்தால் சிறுநீரை இடது சிறுநீரகத்திலிருந்து சிறுநீர்ப்பைக்கு நகர்த்துகிறது.",
+      importance: "சிறுநீரகத்தில் உருவான சிறுநீர் தங்கு தடையின்றி வெளியேற பாதையை அமைக்கிறது.",
+      class11Connection: "சிறுநீரைச் சிறுநீர்ப்பைக்குக் கொண்டு செல்லும் கழிவுப் பாதையின் ஒரு பகுதி.",
+      memoryTip: "சிறுநீர்க்கழாய் சிறுநீரைக் கடத்துகிறது.",
+    }
   },
   rightUreter: {
     id: "rightUreter",
@@ -104,6 +149,15 @@ export const kidneyParts = {
     side: "right",
     mainLabel: true,
     keywords: ["right ureter", "rightureter", "rureter", "r_ureter", "ureter", "ureters", "urine tube"],
+    ta: {
+      name: "வலது சிறுநீர்க்குழாய்",
+      shortLabel: "சிறுநீர்க்குழாய்",
+      definition: "வலது சிறுநீரகத்திலிருந்து சிறுநீர்ப்பைக்குச் சிறுநீரைக் கொண்டு செல்லும் குழாய்.",
+      function: "அலை போன்ற தசை இயக்கத்தால் சிறுநீரை வலது சிறுநீரகத்திலிருந்து சிறுநீர்ப்பைக்கு நகர்த்துகிறது.",
+      importance: "வலது சிறுநீரகத்தைச் சிறுநீர் சேமிக்கும் பையுடன் இணைக்கிறது.",
+      class11Connection: "சிறுநீர் கொண்டு செல்ல சிறுநீரகத்தை சிறுநீர்ப்பையுடன் இணைக்கும் குழாய்.",
+      memoryTip: "சிறுநீர்க்குழாய் சிறுநீரைக் கடத்துகிறது.",
+    }
   },
   urinaryBladder: {
     id: "urinaryBladder",
@@ -121,6 +175,15 @@ export const kidneyParts = {
     markerSize: 0.28,
     mainLabel: true,
     keywords: ["bladder", "urinary bladder", "urinarybladder", "vesica"],
+    ta: {
+      name: "சிறுநீர்ப்பை",
+      shortLabel: "சிறுநீர்ப்பை",
+      definition: "சிறுநீர் உடலுக்கு வெளியே செல்லும் முன் அதைத் தற்காலிகமாகச் சேமித்து வைக்கும் தசைப் பை.",
+      function: "சிறுநீர் கழிக்கப்படும் வரை அதைச் சேமித்து வைப்பது.",
+      importance: "தொடர்ச்சியாகச் சிறுநீர் வெளியேறுவதைத் தடுத்து, தேவையான நேரத்தில் வெளியேற்ற உதவுகிறது.",
+      class11Connection: "சிறுநீர் வெளியேறும் பாதையில் சேமிக்கும் அமைப்பைக் காட்டுகிறது.",
+      memoryTip: "சிறுநீர்ப்பை என்பது சிறுநீர் சேமிப்புப் பை.",
+    }
   },
   urethra: {
     id: "urethra",
@@ -136,6 +199,15 @@ export const kidneyParts = {
     labelOffset: [0.28, -0.02, 0.35],
     markerSize: 0.12,
     keywords: ["urethra", "urinary canal"],
+    ta: {
+      name: "சிறுநீர் வெளிவழி",
+      shortLabel: "சிறுநீர் வெளிவழி",
+      definition: "சிறுநீர்ப்பையிலிருந்து சிறுநீர் உடலுக்கு வெளியே செல்லும் குழாய்.",
+      function: "சிறுநீர் கழிக்கும்போது சிறுநீரை உடலுக்கு வெளியே கொண்டு செல்கிறது.",
+      importance: "கழிவுநீக்கப் பாதையை முழுமையாக்குகிறது.",
+      class11Connection: "சிறுநீர் வெளியேற்றத்தின் இறுதிப் பாதை.",
+      memoryTip: "சிறுநீர் வெளிவழி உடலிலிருந்து வெளியேறுகிறது (Exits).",
+    }
   },
   nephron: {
     id: "nephron",
@@ -152,6 +224,15 @@ export const kidneyParts = {
     markerSize: 0.1,
     internal: true,
     keywords: ["nephron", "glomerulus", "bowman", "tubule"],
+    ta: {
+      name: "நெஃப்ரான்",
+      shortLabel: "நெஃப்ரான்",
+      definition: "சிறுநீரகத்தின் நுண்ணிய செயல் அலகு.",
+      function: "இரத்த வடிகட்டுதல், மீண்டும் உறிஞ்சுதல் மற்றும் சுரத்தல் மூலம் சிறுநீரை உருவாக்குவது.",
+      importance: "ஒவ்வொரு சிறுநீரகத்திலும் உள்ள மில்லியனுக்கும் அதிகமான நெஃப்ரான்கள் உண்மையான வடிகட்டுதல் வேலையைச் செய்கின்றன.",
+      class11Connection: "வகுப்பு 11 கழிவுப் பொருட்கள் மற்றும் அவற்றின் நீக்கம் பாடத்தின் முக்கிய தலைப்பு.",
+      memoryTip: "நெஃப்ரான் என்பது சிறுநீரகத்தின் வேலை செய்யும் அலகு.",
+    }
   },
   cortex: {
     id: "cortex",
@@ -169,6 +250,15 @@ export const kidneyParts = {
     markerSize: 0.16,
     internal: true,
     keywords: ["cortex", "renal cortex", "outer"],
+    ta: {
+      name: "சிறுநீரக வெளிப்பகுதி (Renal Cortex)",
+      shortLabel: "வெளிப்பகுதி (Cortex)",
+      definition: "சிறுநீரகத்தின் வெளி அடுக்கு மண்டலம்.",
+      function: "கிளாமருலஸ்களைக் கொண்டு வடிகட்டுதல் செயல்முறையைத் தொடங்குகிறது.",
+      importance: "இங்குதான் நெஃப்ரான்களில் இரத்த வடிகட்டுதல் தொடங்குகிறது.",
+      class11Connection: "சிறுநீரகத்தின் உள்ளே நெஃப்ரானின் பகுதிகளைக் கண்டறிய உதவுகிறது.",
+      memoryTip: "சிறுநீரகத்தின் வெளி மூடி போன்ற பகுதி (Cortex).",
+    }
   },
   medulla: {
     id: "medulla",
@@ -186,6 +276,15 @@ export const kidneyParts = {
     markerSize: 0.16,
     internal: true,
     keywords: ["medulla", "renal medulla", "pyramid", "pyramids"],
+    ta: {
+      name: "சிறுநீரக உட்பகுதி (Renal Medulla)",
+      shortLabel: "உட்பகுதி (Medulla)",
+      definition: "சிறுநீரக பிரமிடுகள் எனப்படும் கூம்பு வடிவ பகுதிகளைக் கொண்ட உட்பகுதி.",
+      function: "சேகரிப்புக் குழாய்கள் மற்றும் ஹென்லேயின் வளைவு வழியாக சிறுநீரை அடர்த்தியாக்க உதவுகிறது.",
+      importance: "உடலின் நீர்ச்சத்தைச் சமநிலையில் வைக்க சிறுநீரின் அடர்த்தியைக் கட்டுப்படுத்துகிறது.",
+      class11Connection: "மீண்டும் உறிஞ்சுதல் மற்றும் சவ்வூடுபரவல் ஒழுங்குபாட்டுடன் தொடர்புடையது.",
+      memoryTip: "சிறுநீரகத்தின் உட்பகுதி (Medulla).",
+    }
   },
   pelvis: {
     id: "pelvis",
@@ -202,6 +301,15 @@ export const kidneyParts = {
     markerSize: 0.14,
     internal: true,
     keywords: ["pelvis", "renal pelvis", "hilum", "calyx", "calyces"],
+    ta: {
+      name: "சிறுநீரக இடுப்பு பகுதி",
+      shortLabel: "இடுப்பு பகுதி (Pelvis)",
+      definition: "சிறுநீரகத்தின் உட்புறத்தில் உள்ள புனல் வடிவ சிறுநீர் சேகரிக்கும் பகுதி.",
+      function: "சேகரிப்புக் குழாய்களிலிருந்து சிறுநீரைப் பெற்று சிறுநீர்க்குழாய்க்கு அனுப்புகிறது.",
+      importance: "சிறுநீரகத்தின் உட்புற வடிகட்டுதலையும் வெளிப்புற சிறுநீர்க்குழாயையும் இணைக்கிறது.",
+      class11Connection: "நெஃப்ரானிலிருந்து சிறுநீர்க்குழாய்க்குச் செல்லும் பாதை.",
+      memoryTip: "சிறுநீர்க்குழாய்க்கு சிறுநீரை அனுப்பும் புனல் (Pelvis).",
+    }
   },
 };
 
@@ -224,26 +332,46 @@ export const guidedSteps = [
     id: "renalArtery",
     title: "Step 1",
     text: "Blood enters the kidney through the renal artery.",
+    ta: {
+      title: "படி 1",
+      text: "சிறுநீரகத் தமனி வழியாக இரத்தம் சிறுநீரகத்திற்குள் நுழைகிறது.",
+    }
   },
   {
     id: "leftKidney",
     title: "Step 2",
     text: "The kidney filters waste such as urea from the blood.",
+    ta: {
+      title: "படி 2",
+      text: "சிறுநீரகம் இரத்தத்திலிருந்து யூரியா போன்ற கழிவுகளை வடிகட்டுகிறது.",
+    }
   },
   {
     id: "leftKidney",
     title: "Step 3",
     text: "Urine forms inside the kidney as useful water and salts are reabsorbed.",
+    ta: {
+      title: "படி 3",
+      text: "பயனுள்ள நீர் மற்றும் உப்புகள் மீண்டும் உறிஞ்சப்படுவதால் சிறுநீரகத்திற்குள் சிறுநீர் உருவாகிறது.",
+    }
   },
   {
     id: "leftUreter",
     title: "Step 4",
     text: "A ureter carries urine from the kidney to the urinary bladder.",
+    ta: {
+      title: "படி 4",
+      text: "சிறுநீர்க்குழாய் சிறுநீரைச் சிறுநீரகத்திலிருந்து சிறுநீர்ப்பைக்குக் கொண்டு செல்கிறது.",
+    }
   },
   {
     id: "urinaryBladder",
     title: "Step 5",
     text: "The urinary bladder stores urine for some time.",
+    ta: {
+      title: "படி 5",
+      text: "சிறுநீர்ப்பை சிறுநீரைச் சிறிது நேரம் சேமித்து வைக்கிறது.",
+    }
   },
 ];
 
@@ -258,6 +386,13 @@ export const quizQuestions = [
     hint: "Look toward the lower part of the urinary system.",
     strongerHint: "It is a rounded sac-like structure near the bottom.",
     explanation: "Correct! The bladder stores urine before it leaves the body.",
+    ta: {
+      question: "உடலில் இருந்து சிறுநீர் வெளியேறும் முன் அதைச் சேமித்து வைக்கும் உறுப்பை சொடுக்கவும்.",
+      answerLabel: "சிறுநீர்ப்பை",
+      hint: "சிறுநீர் கழிவு நீக்க மண்டலத்தின் கீழ் பகுதியை நோக்கிப் பார்க்கவும்.",
+      strongerHint: "இது அடிப்பகுதியில் உள்ள ஒரு வட்டமான பை போன்ற அமைப்பாகும்.",
+      explanation: "சரியான விடை! சிறுநீர்ப்பை சிறுநீரை வெளியேற்றும் முன் சேமித்து வைக்கிறது."
+    }
   },
   {
     id: "click-renal-artery-entry",
@@ -269,6 +404,13 @@ export const quizQuestions = [
     hint: "Look for the red vessel connected to the kidneys.",
     strongerHint: "It is the incoming blood path from the main vessel toward the kidneys.",
     explanation: "Correct! The renal artery brings blood into the kidney for filtration.",
+    ta: {
+      question: "சிறுநீரகத்திற்குள் இரத்தத்தைக் கொண்டு வரும் இரத்தக் குழாயைச் சொடுக்கவும்.",
+      answerLabel: "சிறுநீரகத் தமனி",
+      hint: "சிறுநீரகங்களுடன் இணைக்கப்பட்டுள்ள சிவப்பு நிற குழாயைத் தேடவும்.",
+      strongerHint: "இது முக்கிய இரத்தக் குழாயிலிருந்து சிறுநீரகங்களை நோக்கி வரும் பாதையாகும்.",
+      explanation: "சரியான விடை! சிறுநீரகத் தமனி வடிகட்டுவதற்காக இரத்தத்தை சிறுநீரகத்திற்குள் கொண்டு வருகிறது."
+    }
   },
   {
     id: "click-renal-vein-exit",
@@ -280,6 +422,13 @@ export const quizQuestions = [
     hint: "Look for the blue vessel connected to the kidneys.",
     strongerHint: "It is the return path after blood has passed through the kidney.",
     explanation: "Correct! The renal vein carries filtered blood away from the kidney.",
+    ta: {
+      question: "சுத்திகரிக்கப்பட்ட இரத்தத்தைச் சிறுநீரகத்திலிருந்து வெளியே எடுத்துச் செல்லும் இரத்தக் குழாயைச் சொடுக்கவும்.",
+      answerLabel: "சிறுநீரகச் சிரை",
+      hint: "சிறுநீரகங்களுடன் இணைக்கப்பட்டுள்ள நீல நிற குழாயைத் தேடவும்.",
+      strongerHint: "இது இரத்தம் சிறுநீரகத்தை கடந்து சென்ற பின் திரும்பிச் செல்லும் பாதையாகும்.",
+      explanation: "சரியான விடை! சிறுநீரகச் சிரை வடிகட்டப்பட்ட இரத்தத்தை சிறுநீரகத்திலிருந்து வெளியே எடுத்துச் செல்கிறது."
+    }
   },
   {
     id: "click-ureter-transport",
@@ -291,6 +440,13 @@ export const quizQuestions = [
     hint: "Look for a thin tube running downward from a kidney.",
     strongerHint: "Follow the narrow path from a kidney toward the lower storage organ.",
     explanation: "Correct! A ureter carries urine from the kidney to the bladder.",
+    ta: {
+      question: "சிறுநீரகத்திலிருந்து சிறுநீர்ப்பைக்குச் சிறுநீரைக் கொண்டு செல்லும் குழாயைச் சொடுக்கவும்.",
+      answerLabel: "சிறுநீர்க்குழாய்",
+      hint: "சிறுநீரகத்திலிருந்து கீழ்நோக்கிச் செல்லும் ஒரு மெல்லிய குழாயைத் தேடவும்.",
+      strongerHint: "சிறுநீரகத்திலிருந்து கீழே உள்ள சேமிப்பு உறுப்பை நோக்கிச் செல்லும் குறுகிய பாதையைப் பின்தொடரவும்.",
+      explanation: "சரியான விடை! சிறுநீர்க்குழாய் சிறுநீரை சிறுநீரகத்திலிருந்து சிறுநீர்ப்பைக்குக் கொண்டு செல்கிறது."
+    }
   },
   {
     id: "click-kidney-filter",
@@ -302,6 +458,13 @@ export const quizQuestions = [
     hint: "Look for one of the bean-shaped organs.",
     strongerHint: "There are two of these organs, one on each side of the model.",
     explanation: "Correct! The kidneys filter blood and help form urine.",
+    ta: {
+      question: "இரத்தத்தை வடிகட்டி சிறுநீரை உருவாக்கும் உறுப்பைச் சொடுக்கவும்.",
+      answerLabel: "சிறுநீரகம்",
+      hint: "அவரை விதை வடிவிலான உறுப்புகளில் ஒன்றைத் தேடவும்.",
+      strongerHint: "மாதிரியின் இருபுறமும் இந்த உறுப்புகள் இணையாக அமைந்துள்ளன.",
+      explanation: "சரியான விடை! சிறுநீரகங்கள் இரத்தத்தை வடிகட்டி சிறுநீர் உருவாக உதவுகின்றன."
+    }
   },
   {
     id: "mcq-cortex-outer",
@@ -319,6 +482,19 @@ export const quizQuestions = [
     hint: "Think of the outer layer of the kidney.",
     strongerHint: "It is the outer cortex region where ultrafiltration begins.",
     explanation: "The renal cortex is the outer region of the kidney where filtration starts.",
+    ta: {
+      question: "சிறுநீரகத்தின் எந்த வெளிப்பகுதி கிளாமருலஸைக் கொண்டு இரத்த வடிகட்டுதலைத் தொடங்குகிறது?",
+      options: [
+        { id: "medulla", text: "சிறுநீரக உட்பகுதி" },
+        { id: "cortex", text: "சிறுநீரக வெளிப்பகுதி" },
+        { id: "pelvis", text: "சிறுநீரக இடுப்பு பகுதி" },
+        { id: "urinaryBladder", text: "சிறுநீர்ப்பை" },
+      ],
+      answer: "சிறுநீரக வெளிப்பகுதி",
+      hint: "சிறுநீரகத்தின் வெளிப்புற அடுக்கு பற்றி யோசிக்கவும்.",
+      strongerHint: "சிறுநீரகத்தில் வடிகட்டுதல் தொடங்கும் வெளிப்புறப் பகுதி இதுவாகும்.",
+      explanation: "சிறுநீரக வெளிப்பகுதி (cortex) என்பது வடிகட்டுதல் தொடங்கும் சிறுநீரகத்தின் வெளிப்புற அடுக்கு ஆகும்."
+    }
   },
   {
     id: "mcq-medulla-inner",
@@ -336,6 +512,19 @@ export const quizQuestions = [
     hint: "Think of the middle or inner region of the kidney.",
     strongerHint: "This inner area contains the collecting ducts and pyramids.",
     explanation: "The renal medulla is the inner region containing pyramids that help concentrate urine.",
+    ta: {
+      question: "சிறுநீரக பிரமிடுகளைக் கொண்டு, சிறுநீரை அடர்த்தியாக்க உதவும் சிறுநீரகத்தின் உட்பகுதி எது?",
+      options: [
+        { id: "cortex", text: "சிறுநீரக வெளிப்பகுதி" },
+        { id: "pelvis", text: "சிறுநீரக இடுப்பு பகுதி" },
+        { id: "medulla", text: "சிறுநீரக உட்பகுதி" },
+        { id: "renalVein", text: "சிறுநீரகச் சிரை" },
+      ],
+      answer: "சிறுநீரக உட்பகுதி",
+      hint: "சிறுநீரகத்தின் நடுப்பகுதி அல்லது உட்பகுதியைப் பற்றி யோசிக்கவும்.",
+      strongerHint: "இந்த உட்பகுதியில் தான் சேகரிக்கும் குழாய்களும் கூம்பு பிரமிடுகளும் உள்ளன.",
+      explanation: "சிறுநீரக உட்பகுதி (medulla) என்பது பிரமிடுகளைக் கொண்டு சிறுநீரை அடர்த்தியாக்க உதவும் பகுதியாகும்."
+    }
   },
   {
     id: "function-urine-storage",
@@ -353,6 +542,19 @@ export const quizQuestions = [
     hint: "Think about the lower organ that holds urine for some time.",
     strongerHint: "It is the rounded storage sac near the bottom of the model.",
     explanation: "The urinary bladder stores urine before urination.",
+    ta: {
+      question: "உடலில் இருந்து சிறுநீர் வெளியேறும் முன் அதைச் சேமித்து வைக்கும் அமைப்பு எது?",
+      options: [
+        { id: "renalArtery", text: "சிறுநீரகத் தமனி" },
+        { id: "urinaryBladder", text: "சிறுநீர்ப்பை" },
+        { id: "medulla", text: "சிறுநீரக உட்பகுதி" },
+        { id: "leftUreter", text: "சிறுநீர்க்குழாய்" },
+      ],
+      answer: "சிறுநீர்ப்பை",
+      hint: "சிறுநீரைத் தற்காலிகமாகத் தேக்கி வைக்கும் கீழ் உறுப்பைப் பற்றி யோசிக்கவும்.",
+      strongerHint: "இது மாதிரியின் அடிப்பகுதிக்கு அருகில் உள்ள வட்டமான சேமிப்புப் பை.",
+      explanation: "சிறுநீர்ப்பை சிறுநீர் கழிக்கப்படும் வரை அதைச் சேமித்து வைக்கிறது."
+    }
   },
   {
     id: "function-blood-entry",
@@ -370,6 +572,19 @@ export const quizQuestions = [
     hint: "Look for the blood vessel that arrives at the kidney.",
     strongerHint: "It is shown as the red vessel in the model.",
     explanation: "The renal artery delivers blood to the kidney.",
+    ta: {
+      question: "வடிகட்டுவதற்காக சிறுநீரகத்திற்கு இரத்தத்தைக் கொண்டு செல்லும் அமைப்பு எது?",
+      options: [
+        { id: "renalVein", text: "சிறுநீரகச் சிரை" },
+        { id: "renalArtery", text: "சிறுநீரகத் தமனி" },
+        { id: "urinaryBladder", text: "சிறுநீர்ப்பை" },
+        { id: "rightUreter", text: "வலது சிறுநீர்க்குழாய்" },
+      ],
+      answer: "சிறுநீரகத் தமனி",
+      hint: "சிறுநீரகத்தை வந்தடையும் இரத்தக் குழாயைத் தேடவும்.",
+      strongerHint: "இது மாதிரியில் சிவப்பு நிறத்தில் காட்டப்பட்டுள்ள இரத்தக் குழாயாகும்.",
+      explanation: "சிறுநீரகத் தமனி வடிகட்டுவதற்காக இரத்தத்தை சிறுநீரகத்திற்கு எடுத்துச் செல்கிறது."
+    }
   },
   {
     id: "function-filtered-blood-exit",
@@ -387,6 +602,19 @@ export const quizQuestions = [
     hint: "This is a blood vessel, not a urine tube.",
     strongerHint: "It is shown as the blue vessel in the model.",
     explanation: "The renal vein carries filtered blood away from the kidney.",
+    ta: {
+      question: "சுத்திகரிக்கப்பட்ட இரத்தத்தை சிறுநீரகத்திலிருந்து வெளியே எடுத்துச் செல்லும் அமைப்பு எது?",
+      options: [
+        { id: "renalVein", text: "சிறுநீரகச் சிரை" },
+        { id: "renalArtery", text: "சிறுநீரகத் தமனி" },
+        { id: "cortex", text: "சிறுநீரக வெளிப்பகுதி" },
+        { id: "urinaryBladder", text: "சிறுநீர்ப்பை" },
+      ],
+      answer: "சிறுநீரகச் சிரை",
+      hint: "இது ஒரு இரத்தக் குழாய், சிறுநீர் குழாய் அல்ல.",
+      strongerHint: "இது மாதிரியில் நீல நிறத்தில் காட்டப்பட்டுள்ள இரத்தக் குழாயாகும்.",
+      explanation: "சிறுநீரகச் சிரை வடிகட்டப்பட்ட சுத்தமான இரத்தத்தை சிறுநீரகத்திலிருந்து வெளியே எடுத்துச் செல்கிறது."
+    }
   },
   {
     id: "function-urine-transport",
@@ -404,6 +632,19 @@ export const quizQuestions = [
     hint: "This structure is a tube, not an organ that stores or filters.",
     strongerHint: "It runs downward from the kidney toward the bladder.",
     explanation: "A ureter transports urine from the kidney to the bladder.",
+    ta: {
+      question: "சிறுநீரகத்திலிருந்து சிறுநீர்ப்பைக்கு சிறுநீரை எடுத்துச் செல்லும் அமைப்பு எது?",
+      options: [
+        { id: "renalArtery", text: "சிறுநீரகத் தமனி" },
+        { id: "renalVein", text: "சிறுநீரகச் சிரை" },
+        { id: "leftUreter", text: "சிறுநீர்க்குழாய்" },
+        { id: "medulla", text: "சிறுநீரக உட்பகுதி" },
+      ],
+      answer: "சிறுநீர்க்குழாய்",
+      hint: "இந்த அமைப்பு ஒரு குழாய் ஆகும், இது வடிகட்டும் உறுப்பு அல்ல.",
+      strongerHint: "இது சிறுநீரகத்திலிருந்து சிறுநீர்ப்பையை நோக்கி கீழ்நோக்கிச் செல்கிறது.",
+      explanation: "சிறுநீர்க்குழாய் சிறுநீரை சிறுநீரகத்திலிருந்து சிறுநீர்ப்பைக்கு கொண்டு செல்கிறது."
+    }
   },
   {
     id: "pathway-blood-filter-next",
@@ -421,6 +662,19 @@ export const quizQuestions = [
     hint: "Follow the red vessel to the organ it enters.",
     strongerHint: "The filtering organ is bean-shaped.",
     explanation: "Blood reaches the kidney through the renal artery, then the kidney filters it.",
+    ta: {
+      question: "இரத்தம் சிறுநீரகத் தமனி வழியாக நுழைந்த பிறகு, அதை வடிகட்டும் உறுப்பு எது?",
+      options: [
+        { id: "urinaryBladder", text: "சிறுநீர்ப்பை" },
+        { id: "kidney", text: "சிறுநீரகம்" },
+        { id: "ureter", text: "சிறுநீர்க்குழாய்" },
+        { id: "renalVein", text: "சிறுநீரகச் சிரை" },
+      ],
+      answer: "சிறுநீரகம்",
+      hint: "சிவப்பு இரத்தக் குழாய் எந்த உறுப்பிற்குள் நுழைகிறது என்று பார்க்கவும்.",
+      strongerHint: "வடிகட்டும் உறுப்பு அவரை விதை வடிவில் இருக்கும்.",
+      explanation: "சிறுநீரகத் தமனி வழியாக இரத்தம் சிறுநீரகத்திற்குள் சென்று அங்கு வடிகட்டப்படுகிறது."
+    }
   },
   {
     id: "pathway-urine-leaves-kidney",
@@ -438,6 +692,19 @@ export const quizQuestions = [
     hint: "Trace the urine path downward from a kidney.",
     strongerHint: "It is the narrow tube connecting a kidney to the bladder.",
     explanation: "Urine leaves the kidney through a ureter.",
+    ta: {
+      question: "ஒவ்வொரு சிறுநீரகத்திலிருந்தும் சிறுநீர் எந்த அமைப்பின் வழியாக வெளியேறுகிறது?",
+      options: [
+        { id: "renalVein", text: "சிறுநீரகச் சிரை" },
+        { id: "renalArtery", text: "சிறுநீரகத் தமனி" },
+        { id: "ureter", text: "சிறுநீர்க்குழாய்" },
+        { id: "cortex", text: "சிறுநீரக வெளிப்பகுதி" },
+      ],
+      answer: "சிறுநீர்க்குழாய்",
+      hint: "சிறுநீரகத்திலிருந்து சிறுநீர் கீழே செல்லும் வழியைப் பின்தொடரவும்.",
+      strongerHint: "இது சிறுநீரகத்தையும் சிறுநீர்ப்பையையும் இணைக்கும் குறுகிய குழாயாகும்.",
+      explanation: "ஒவ்வொரு சிறுநீரகத்திலிருந்தும் சிறுநீர் சிறுநீர்க்குழாய் வழியாக வெளியேறுகிறது."
+    }
   },
   {
     id: "pathway-ureters-empty-into",
@@ -455,5 +722,165 @@ export const quizQuestions = [
     hint: "Follow both urine tubes downward.",
     strongerHint: "They lead to the rounded storage organ near the bottom.",
     explanation: "The urinary bladder receives urine from the ureters.",
+    ta: {
+      question: "சிறுநீர்க்குழாய்களில் இருந்து வரும் சிறுநீரைப் பெறும் அமைப்பு எது?",
+      options: [
+        { id: "bladder", text: "சிறுநீர்ப்பை" },
+        { id: "renalArtery", text: "சிறுநீரகத் தமனி" },
+        { id: "ureter", text: "சிறுநீர்க்குழாய்" },
+        { id: "medulla", text: "சிறுநீரக உட்பகுதி" },
+      ],
+      answer: "சிறுநீர்ப்பை",
+      hint: "இரு சிறுநீர் குழாய்களையும் கீழ்நோக்கிப் பின்தொடரவும்.",
+      strongerHint: "அவை மாதிரியின் அடிப்பகுதியில் உள்ள ஒரு வட்டமான சேமிப்புப் பை போன்ற உறுப்பிற்குச் செல்கின்றன.",
+      explanation: "சிறுநீர்க்குழாய்களில் இருந்து வரும் சிறுநீரை சிறுநீர்ப்பை பெறுகிறது."
+    }
   },
 ];
+
+export const translations = {
+  en: {
+    title: "Kidney Anatomy Explorer",
+    subtitle: "An interactive 3D Class 11 Biology learning lab for exploring the human excretory system.",
+    class11: "Class 11 Biology",
+    tabLearn: "Learn",
+    tabPath: "Path",
+    tabQuiz: "Quiz",
+    btnResetView: "Reset view",
+    btnLabels: "Labels",
+    btnFullscreen: "Fullscreen",
+    btnNextQuestion: "Next question",
+    btnRestart: "Restart",
+    btnRestartQuiz: "Restart quiz",
+    lblLoading: "Loading kidney model...",
+    lblQuickViews: "Quick views",
+    lblAnatomyParts: "Anatomy parts",
+    viewFullSystem: "Full system",
+    viewLeftKidney: "Left kidney",
+    viewRightKidney: "Right kidney",
+    viewBladder: "Bladder",
+    quizInteractive: "Interactive quiz",
+    quizLearningCheck: "Learning check",
+    quizComplete: "Quiz Complete!",
+    quizFinalScore: "Your Final Score",
+    quizAccuracy: "Accuracy",
+    quizAttempts: "Attempts",
+    quizWrongAttempts: "Wrong Attempts",
+    quizStreak: "Streak",
+    quizPartsMastered: "Parts Mastered",
+    quizReviewMistakes: "Review Mistakes",
+    quizCorrectLabel: "Correct:",
+    quizClickOnModel: "Click the correct part on the 3D model.",
+    learningProgress: "Learning Progress",
+    completed: "Completed",
+    overview: "Overview",
+    overviewTitle: "Human Excretory System",
+    overviewDesc: "This interactive 3D model helps you explore the main parts of the human urinary system. Click any part of the model to learn its function, importance, and Class 11 Biology connection.",
+    overviewFilter: "Kidneys filter blood and remove waste.",
+    overviewUreters: "Ureters carry urine to the bladder.",
+    overviewBladder: "The urinary bladder stores urine.",
+    overviewArtery: "Renal artery brings blood to the kidney.",
+    overviewVein: "Renal vein carries filtered blood away.",
+    overviewInstruction: "Click any part of the model or choose from Anatomy parts to start learning.",
+    selectedPart: "Selected part",
+    infoDefinition: "What is it?",
+    infoFunction: "Main function",
+    infoImportance: "Why it matters",
+    infoConnection: "Class 11 connection",
+    infoTip: "Remember this",
+    guidedLearning: "Guided learning",
+    urineFormationPath: "Urine formation path",
+    btnPrevious: "Previous",
+    btnNextStep: "Next step",
+    quizScore: "Score",
+    quizProgress: "Progress",
+    quizWrong: "Wrong"
+  },
+  ta: {
+    title: "சிறுநீரக உடற்கூறியல் ஆய்வி",
+    subtitle: "மனித கழிவுநீக்க மண்டலத்தை ஆராய்வதற்கான ஒரு முப்பரிமாண (3D) உயிரியல் கற்றல் கூடம்.",
+    class11: "வகுப்பு 11 உயிரியல்",
+    tabLearn: "கற்றல்",
+    tabPath: "பாதை",
+    tabQuiz: "வினாடி வினா",
+    btnResetView: "பார்வை மீட்டமை",
+    btnLabels: "பெயரிடல்கள்",
+    btnFullscreen: "முழுத்திரை",
+    btnNextQuestion: "அடுத்த கேள்வி",
+    btnRestart: "மீண்டும் தொடங்க",
+    btnRestartQuiz: "மீண்டும் வினாடி வினா",
+    lblLoading: "சிறுநீரக மாதிரி ஏற்றப்படுகிறது...",
+    lblQuickViews: "விரைவுப் பார்வைகள்",
+    lblAnatomyParts: "உடற்கூறு உறுப்புகள்",
+    viewFullSystem: "முழு அமைப்பு",
+    viewLeftKidney: "இடது சிறுநீரகம்",
+    viewRightKidney: "வலது சிறுநீரகம்",
+    viewBladder: "சிறுநீர்ப்பை",
+    quizInteractive: "ஊடாடும் வினாடி வினா",
+    quizLearningCheck: "கற்றல் சோதனை",
+    quizComplete: "வினாடி வினா நிறைவடைந்தது!",
+    quizFinalScore: "உங்களது இறுதி மதிப்பெண்",
+    quizAccuracy: "துல்லியம்",
+    quizAttempts: "முயற்சிகள்",
+    quizWrongAttempts: "தவறான முயற்சிகள்",
+    quizStreak: "தொடர் வெற்றி",
+    quizPartsMastered: "தேர்ச்சி பெற்றவை",
+    quizReviewMistakes: "தவறுகளை மதிப்பாய்வு செய்",
+    quizCorrectLabel: "சரியான விடை:",
+    quizClickOnModel: "3D மாதிரியில் சரியான உறுப்பைச் சொடுக்கவும்.",
+    learningProgress: "கற்றல் முன்னேற்றம்",
+    completed: "முடிந்தது",
+    overview: "கண்ணோட்டம்",
+    overviewTitle: "மனித கழிவுநீக்க மண்டலம்",
+    overviewDesc: "இந்த முப்பரிமாண (3D) மாதிரி மனித சிறுநீரக மண்டலத்தின் முக்கிய பகுதிகளை ஆராய உதவுகிறது. மாதிரியின் ஏதேனும் ஒரு பகுதியைச் சொடுக்கி அதன் செயல்பாடு, முக்கியத்துவம் மற்றும் வகுப்பு 11 உயிரியல் தொடர்பை அறிந்து கொள்ளலாம்.",
+    overviewFilter: "சிறுநீரகங்கள் இரத்தத்தை வடிகட்டி கழிவுகளை அகற்றுகின்றன.",
+    overviewUreters: "சிறுநீர்க்குழாய்கள் சிறுநீரைச் சிறுநீர்ப்பைக்குக் கொண்டு செல்கின்றன.",
+    overviewBladder: "சிறுநீர்ப்பை சிறுநீரைச் சேமித்து வைக்கிறது.",
+    overviewArtery: "சிறுநீரகத் தமனி இரத்தத்தைச் சிறுநீரகத்திற்குக் கொண்டு வருகிறது.",
+    overviewVein: "சிறுநீரகச் சிரை வடிகட்டப்பட்ட இரத்தத்தை வெளியே எடுத்துச் செல்கிறது.",
+    overviewInstruction: "கற்றலைத் தொடங்க மாதிரியின் ஏதேனும் ஒரு பகுதியைச் சொடுக்கவும் அல்லது உடற்கூறு உறுப்புகள் பகுதியிலிருந்து தேர்ந்தெடுக்கவும்.",
+    selectedPart: "தேர்ந்தெடுக்கப்பட்ட பகுதி",
+    infoDefinition: "அது என்ன?",
+    infoFunction: "முக்கிய செயல்பாடு",
+    infoImportance: "இதன் முக்கியத்துவம்",
+    infoConnection: "வகுப்பு 11 தொடர்பு",
+    infoTip: "நினைவில் கொள்க",
+    guidedLearning: "வழிகாட்டப்பட்ட கற்றல்",
+    urineFormationPath: "சிறுநீர் உருவாகும் பாதை",
+    btnPrevious: "முந்தையது",
+    btnNextStep: "அடுத்த படி",
+    quizScore: "மதிப்பெண்",
+    quizProgress: "முன்னேற்றம்",
+    quizWrong: "தவறானவை"
+  }
+};
+
+export function getTranslatedPart(part, language) {
+  if (!part) return null;
+  if (language === "ta" && part.ta) {
+    return { ...part, ...part.ta };
+  }
+  return part;
+}
+
+export function getTranslatedQuestion(question, language) {
+  if (!question) return null;
+  if (language === "ta" && question.ta) {
+    return {
+      ...question,
+      question: question.ta.question ?? question.question,
+      options: question.options ? question.options.map(opt => {
+        const taOpt = question.ta.options?.find(o => o.id === opt.id);
+        return taOpt ? { ...opt, text: taOpt.text } : opt;
+      }) : [],
+      hint: question.ta.hint ?? question.hint,
+      strongerHint: question.ta.strongerHint ?? question.strongerHint,
+      explanation: question.ta.explanation ?? question.explanation,
+      answerLabel: question.ta.answerLabel ?? question.answerLabel,
+      answer: question.ta.answer ?? question.answer,
+    };
+  }
+  return question;
+}
+
+

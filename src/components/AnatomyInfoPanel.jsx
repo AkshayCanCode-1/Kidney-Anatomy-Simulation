@@ -1,42 +1,42 @@
-export default function AnatomyInfoPanel({ selectedPart }) {
+import { translations } from "../data/kidneyAnatomyData.js";
+
+export default function AnatomyInfoPanel({ selectedPart, language = "en" }) {
   if (!selectedPart) {
     return (
       <section className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
         <div className="mb-4">
           <p className="text-xs font-semibold uppercase tracking-wide text-teal-700">
-            Overview
+            {translations[language].overview}
           </p>
           <h2 className="text-2xl font-bold text-slate-950">
-            Human Excretory System
+            {translations[language].overviewTitle}
           </h2>
           <p className="mt-2 text-sm leading-6 text-slate-700">
-            This interactive 3D model helps you explore the main parts of the
-            human urinary system. Click any part of the model to learn its
-            function, importance, and Class 11 Biology connection.
+            {translations[language].overviewDesc}
           </p>
         </div>
 
         <div className="space-y-2 text-sm leading-6 text-slate-700">
-          <p>Kidneys filter blood and remove waste.</p>
-          <p>Ureters carry urine to the bladder.</p>
-          <p>The urinary bladder stores urine.</p>
-          <p>Renal artery brings blood to the kidney.</p>
-          <p>Renal vein carries filtered blood away.</p>
+          <p>{translations[language].overviewFilter}</p>
+          <p>{translations[language].overviewUreters}</p>
+          <p>{translations[language].overviewBladder}</p>
+          <p>{translations[language].overviewArtery}</p>
+          <p>{translations[language].overviewVein}</p>
         </div>
 
         <p className="mt-4 rounded-md bg-teal-50 px-3 py-2 text-sm font-semibold text-teal-900">
-          Click any part of the model or choose from Anatomy parts to start learning.
+          {translations[language].overviewInstruction}
         </p>
       </section>
     );
   }
 
   const sections = [
-    ["What is it?", selectedPart.definition],
-    ["Main function", selectedPart.function],
-    ["Why it matters", selectedPart.importance],
-    ["Class 11 connection", selectedPart.class11Connection],
-    ["Remember this", selectedPart.memoryTip],
+    [translations[language].infoDefinition, selectedPart.definition],
+    [translations[language].infoFunction, selectedPart.function],
+    [translations[language].infoImportance, selectedPart.importance],
+    [translations[language].infoConnection, selectedPart.class11Connection],
+    [translations[language].infoTip, selectedPart.memoryTip],
   ];
 
   return (
@@ -49,7 +49,7 @@ export default function AnatomyInfoPanel({ selectedPart }) {
         />
         <div>
           <p className="text-xs font-semibold uppercase tracking-wide text-teal-700">
-            Selected part
+            {translations[language].selectedPart}
           </p>
           <h2 className="text-2xl font-bold text-slate-950">{selectedPart.name}</h2>
         </div>

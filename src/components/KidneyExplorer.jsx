@@ -3,21 +3,8 @@ import AnatomyInfoPanel from "./AnatomyInfoPanel.jsx";
 import GuidedLearning from "./GuidedLearning.jsx";
 import KidneyModel from "./KidneyModel.jsx";
 import KidneyQuiz from "./KidneyQuiz.jsx";
-import { guidedSteps, interactivePartIds, kidneyParts } from "../data/kidneyAnatomyData.js";
+import { guidedSteps, interactivePartIds, kidneyParts, translations, getTranslatedPart } from "../data/kidneyAnatomyData.js";
 import { useSelectedAnatomyPart } from "../hooks/useSelectedAnatomyPart.js";
-
-const tabs = [
-  { id: "learn", label: "Learn" },
-  { id: "guide", label: "Path" },
-  { id: "quiz", label: "Quiz" },
-];
-
-const cameraViewOptions = [
-  { id: "full", label: "Full system" },
-  { id: "leftKidney", label: "Left kidney" },
-  { id: "rightKidney", label: "Right kidney" },
-  { id: "bladder", label: "Bladder" },
-];
 
 function getDefaultSideForPart(partId, fallbackSide = "left") {
   return kidneyParts[partId]?.side ?? (kidneyParts[partId]?.internal ? fallbackSide : null);
@@ -35,9 +22,44 @@ export default function KidneyExplorer() {
   const [guideStep, setGuideStep] = useState(0);
   const quizModelModeRef = useRef(null);
 
+  const [language, setLanguage] = useState(() => {
+    try {
+      return sessionStorage.getItem("kidney_sim_lang") || "en";
+    } catch {
+      return "en";
+    }
+  });
+
+  const handleLanguageChange = (lang) => {
+    setLanguage(lang);
+    try {
+      sessionStorage.setItem("kidney_sim_lang", lang);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const translatedTabs = useMemo(() => [
+    { id: "learn", label: translations[language].tabLearn },
+    { id: "guide", label: translations[language].tabPath },
+    { id: "quiz", label: translations[language].tabQuiz },
+  ], [language]);
+
+  const translatedCameraViewOptions = useMemo(() => [
+    { id: "full", label: translations[language].viewFullSystem },
+    { id: "leftKidney", label: translations[language].viewLeftKidney },
+    { id: "rightKidney", label: translations[language].viewRightKidney },
+    { id: "bladder", label: translations[language].viewBladder },
+  ], [language]);
+
   const partList = useMemo(
     () => interactivePartIds.map((partId) => kidneyParts[partId]),
     []
+  );
+
+  const translatedSelectedPart = useMemo(
+    () => getTranslatedPart(selectedPart, language),
+    [selectedPart, language]
   );
 
   const highlightPart = useCallback((partId, sideOverride) => {
@@ -103,14 +125,43 @@ export default function KidneyExplorer() {
             resetSignal={resetSignal}
             viewPreset={cameraView}
             onClearSelection={handleEmptyViewerClick}
+            language={language}
           />
+
+          {/* Language Toggle */}
+          <div className="absolute right-3 top-3 z-10 sm:right-4 sm:top-4">
+            <div className="flex rounded-lg border border-slate-200 bg-white/95 p-0.5 shadow-sm backdrop-blur">
+              <button
+                type="button"
+                onClick={() => handleLanguageChange("en")}
+                className={`rounded-md px-2.5 py-1 text-xs font-bold transition-all ${
+                  language === "en"
+                    ? "bg-teal-700 text-white"
+                    : "text-slate-700 hover:bg-slate-100"
+                }`}
+              >
+                EN
+              </button>
+              <button
+                type="button"
+                onClick={() => handleLanguageChange("ta")}
+                className={`rounded-md px-2.5 py-1 text-xs font-bold transition-all ${
+                  language === "ta"
+                    ? "bg-teal-700 text-white"
+                    : "text-slate-700 hover:bg-slate-100"
+                }`}
+              >
+                தமிழ்
+              </button>
+            </div>
+          </div>
 
           <div className="pointer-events-none absolute left-3 top-3 max-w-[78%] rounded-lg bg-white/90 px-3 py-2 shadow-sm backdrop-blur sm:left-4 sm:top-4 sm:max-w-md">
             <p className="text-xs font-semibold uppercase tracking-wide text-teal-700">
-              Class 11 Biology
+              {translations[language].class11}
             </p>
             <h1 className="text-lg font-bold text-slate-950 sm:text-2xl">
-              Kidney Anatomy Explorer
+              {translations[language].title}
             </h1>
           </div>
 
@@ -123,7 +174,7 @@ export default function KidneyExplorer() {
                 setResetSignal((value) => value + 1);
               }}
             >
-              Reset view
+              {translations[language].btnResetView}
             </button>
             <button
               type="button"
@@ -140,21 +191,21 @@ export default function KidneyExplorer() {
                 });
               }}
             >
-              Labels
+              {translations[language].btnLabels}
             </button>
             <button
               type="button"
               className="control-button rounded-md bg-white/95 px-3 py-2 text-sm font-semibold text-slate-800 shadow-sm"
               onClick={handleFullscreen}
             >
-              Fullscreen
+              {translations[language].btnFullscreen}
             </button>
           </div>
         </section>
 
         <aside className="panel-scroll flex flex-col gap-4 overflow-y-auto rounded-lg border border-white/70 bg-slate-50/90 p-3 shadow-lab lg:h-[calc(100vh-2rem)] lg:p-4">
           <div className="grid grid-cols-3 gap-2 rounded-lg bg-white p-1 shadow-sm">
-            {tabs.map((tab) => (
+            {translatedTabs.map((tab) => (
               <button
                 key={tab.id}
                 type="button"
@@ -177,14 +228,19 @@ export default function KidneyExplorer() {
             ))}
           </div>
 
-          {activeTab !== "quiz" && <AnatomyInfoPanel selectedPart={selectedPart} />}
+          {activeTab !== "quiz" && (
+            <AnatomyInfoPanel
+              selectedPart={translatedSelectedPart}
+              language={language}
+            />
+          )}
 
           <section className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
             <h2 className="text-sm font-bold uppercase tracking-wide text-slate-700">
-              Quick views
+              {translations[language].lblQuickViews}
             </h2>
             <div className="mt-3 grid grid-cols-2 gap-2">
-              {cameraViewOptions.map((view) => (
+              {translatedCameraViewOptions.map((view) => (
                 <button
                   key={view.id}
                   type="button"
@@ -211,24 +267,27 @@ export default function KidneyExplorer() {
             <>
               <details className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
                 <summary className="cursor-pointer text-sm font-bold uppercase tracking-wide text-slate-700">
-                  Anatomy parts
+                  {translations[language].lblAnatomyParts}
                 </summary>
                 <div className="mt-3 grid grid-cols-2 gap-2">
-                  {partList.map((part) => (
-                    <button
-                      key={part.id}
-                      type="button"
-                      className={[
-                        "control-button rounded-md border px-3 py-2 text-left text-sm font-semibold transition",
-                        selectedPartId === part.id
-                          ? "border-teal-600 bg-teal-50 text-teal-900"
-                          : "border-slate-200 bg-white text-slate-700 hover:border-teal-300",
-                      ].join(" ")}
-                      onClick={() => selectPart(part.id, getDefaultSideForPart(part.id, activeSide))}
-                    >
-                      {part.shortLabel}
-                    </button>
-                  ))}
+                  {partList.map((part) => {
+                    const translatedPart = getTranslatedPart(part, language);
+                    return (
+                      <button
+                        key={part.id}
+                        type="button"
+                        className={[
+                          "control-button rounded-md border px-3 py-2 text-left text-sm font-semibold transition",
+                          selectedPartId === part.id
+                            ? "border-teal-600 bg-teal-50 text-teal-900"
+                            : "border-slate-200 bg-white text-slate-700 hover:border-teal-300",
+                        ].join(" ")}
+                        onClick={() => selectPart(part.id, getDefaultSideForPart(part.id, activeSide))}
+                      >
+                        {translatedPart.shortLabel}
+                      </button>
+                    );
+                  })}
                 </div>
               </details>
             </>
@@ -236,7 +295,11 @@ export default function KidneyExplorer() {
 
           {activeTab === "guide" && (
             <>
-              <GuidedLearning currentStep={guideStep} onStepChange={handleGuideStep} />
+              <GuidedLearning
+                currentStep={guideStep}
+                onStepChange={handleGuideStep}
+                language={language}
+              />
             </>
           )}
 
@@ -245,6 +308,7 @@ export default function KidneyExplorer() {
               onQuizModeChange={handleQuizModeChange}
               onHighlightPart={highlightPart}
               onClearHighlight={clearSelection}
+              language={language}
             />
           )}
         </aside>

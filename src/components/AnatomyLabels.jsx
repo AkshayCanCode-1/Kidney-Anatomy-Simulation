@@ -33,6 +33,7 @@ export default function AnatomyLabels({
   selectedPartId,
   activeSide,
   onSelectPart,
+  language = "en",
 }) {
   return (
     <>
@@ -93,7 +94,7 @@ export default function AnatomyLabels({
                       '--part-color': part.color 
                     }}
                   >
-                    {part.shortLabel}
+                    {language === "ta" && part.ta?.shortLabel ? part.ta.shortLabel : part.shortLabel}
                   </div>
                 </Html>
               </>

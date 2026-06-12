@@ -3,7 +3,7 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Suspense, useEffect, useMemo, useRef } from "react";
 import * as THREE from "three";
 import AnatomyLabels from "./AnatomyLabels.jsx";
-import { interactivePartIds, kidneyParts } from "../data/kidneyAnatomyData.js";
+import { interactivePartIds, kidneyParts, translations } from "../data/kidneyAnatomyData.js";
 import { matchMeshToAnatomy } from "../data/kidneyMeshMap.js";
 
 const MODEL_URL = "/models/kidney.glb";
@@ -181,8 +181,10 @@ function updateGlowMesh(mesh, selectedPartId, isSelected, pulse) {
 
   const part = kidneyParts[selectedPartId];
   const type = selectedPartType(selectedPartId);
-  const glowOpacity = type === "vessel" ? 0.32 + pulse * 0.24 : 0.13 + pulse * 0.12;
-  const glowScale = type === "vessel" || type === "tube" ? 1.022 + pulse * 0.014 : 1.01 + pulse * 0.01;
+  
+  // BackSide glow outline with smooth pulsing
+  const glowOpacity = type === "vessel" ? 0.45 + pulse * 0.25 : 0.3 + pulse * 0.2;
+  const glowScale = type === "vessel" || type === "tube" ? 1.05 + pulse * 0.025 : 1.028 + pulse * 0.015;
 
   let glow = mesh.userData.kidneyGlowMesh;
   if (!glow) {
@@ -194,6 +196,7 @@ function updateGlowMesh(mesh, selectedPartId, isSelected, pulse) {
         opacity: glowOpacity,
         depthWrite: false,
         blending: THREE.AdditiveBlending,
+        side: THREE.BackSide,
       })
     );
     glow.renderOrder = 8;
@@ -205,6 +208,35 @@ function updateGlowMesh(mesh, selectedPartId, isSelected, pulse) {
   glow.material.opacity = glowOpacity;
   glow.scale.setScalar(glowScale);
 }
+function isMaterialMatchingSelection(material, base, selectedPartId) {
+  if (!selectedPartId) return false;
+  
+  const matName = (material?.name ?? "").toLowerCase();
+  
+  // For renalArtery, only highlight red/pink materials (exclude blue/venous materials)
+  if (selectedPartId === "renalArtery") {
+    if (matName.includes("vein") || matName.includes("cava") || matName.includes("vena")) {
+      return false;
+    }
+    if (base.color) {
+      const isVenous = base.color.b > base.color.r * 1.15;
+      if (isVenous) return false;
+    }
+  }
+  
+  // For renalVein, only highlight blue/cyan materials (exclude red/arterial materials)
+  if (selectedPartId === "renalVein") {
+    if (matName.includes("artery") || matName.includes("aorta") || matName.includes("descending")) {
+      return false;
+    }
+    if (base.color) {
+      const isArterial = base.color.r > base.color.b * 1.15;
+      if (isArterial) return false;
+    }
+  }
+  
+  return true;
+}
 
 function applySelectionMaterial(mesh, selectedPartId, activeSide, pulse) {
   const isSelected = isSelectedMesh(mesh, selectedPartId, activeSide);
@@ -213,53 +245,77 @@ function applySelectionMaterial(mesh, selectedPartId, activeSide, pulse) {
   const highlightColor = isSelected && selectedPartId
     ? new THREE.Color(kidneyParts[selectedPartId].color)
     : null;
-  const type = selectedPartType(selectedPartId);
-  const brightenColor = new THREE.Color("#ffffff");
-  const dimColor = new THREE.Color("#5f6f6f");
+
+  // Emissive inner glow is reserved ONLY for blood vessels (renalArtery / renalVein)
+  // Kidneys, bladder, ureters, cortex, medulla, pelvis keep their realistic textures
+  const isVessel = selectedPartId === "renalArtery" || selectedPartId === "renalVein";
+
+  let anyMaterialMatched = false;
 
   forEachMeshMaterial(mesh, (material, index) => {
     const base = baseMaterials[index];
     if (!base) return;
 
+    // Filter selection at the material level to handle shared vessels (artery vs vein)
+    const materialMatches = isSelected && isMaterialMatchingSelection(material, base, selectedPartId);
+    if (materialMatches) {
+      anyMaterialMatched = true;
+    }
+    const materialShouldDim = shouldDim || (isSelected && !materialMatches);
+
     if (material.color && base.color) {
-      material.color.copy(base.color);
-      if (isSelected && highlightColor) {
-        const whiteMix = type === "vessel" ? 0.2 + pulse * 0.1 : 0.34 + pulse * 0.14;
-        material.color.lerp(highlightColor, 1).lerp(brightenColor, whiteMix);
-      } else if (shouldDim) {
-        material.color.lerp(dimColor, 0.64);
+      if (materialMatches) {
+        // Boost brightness slightly (12%) but keep original realistic color/texture fully intact
+        material.color.copy(base.color).multiplyScalar(1.12);
+      } else if (materialShouldDim) {
+        // Dim non-selected material to 55% brightness without changing hues
+        material.color.copy(base.color).multiplyScalar(0.55);
+      } else {
+        // Return to normal base color
+        material.color.copy(base.color);
       }
     }
+    
     if (material.emissive && base.emissive) {
-      material.emissive.copy(base.emissive);
-      if (isSelected && highlightColor) {
-        material.emissive.lerp(highlightColor, 1);
+      if (materialMatches && highlightColor && isVessel) {
+        // Subtly inject custom highlight color into the emissive channel (25% weight) for inner glow
+        material.emissive.copy(highlightColor).multiplyScalar(0.25);
+      } else {
+        material.emissive.copy(base.emissive);
       }
     }
+    
     if (typeof material.emissiveIntensity === "number") {
-      material.emissiveIntensity = isSelected
-        ? (type === "vessel" ? 2.6 + pulse * 1.85 : 1.85 + pulse * 1.35)
+      material.emissiveIntensity = materialMatches && isVessel
+        ? 1.2 + pulse * 0.8
         : (base.emissiveIntensity ?? 0);
     }
+    
     if (typeof material.roughness === "number") {
-      material.roughness = isSelected
-        ? Math.max(0.12, (base.roughness ?? 0.5) * 0.52)
+      material.roughness = materialMatches
+        ? Math.max(0.12, (base.roughness ?? 0.5) * 0.6)
         : base.roughness;
     }
+    
     if (typeof material.metalness === "number") {
       material.metalness = base.metalness;
     }
-    material.opacity = isSelected
+    
+    // Reduce opacity of non-selected parts to draw focus to the selected item
+    material.opacity = materialMatches
       ? Math.max(base.opacity ?? 1, 0.98)
-      : shouldDim
-        ? Math.min(base.opacity ?? 1, 0.72)
+      : materialShouldDim
+        ? Math.min(base.opacity ?? 1, 0.65)
         : base.opacity;
+        
     material.transparent = base.transparent || material.opacity < 1;
     material.depthWrite = material.transparent ? false : (base.depthWrite ?? true);
     material.needsUpdate = true;
   });
 
-  updateGlowMesh(mesh, selectedPartId, isSelected, pulse);
+  // Only show glow outline if the mesh is selected AND contains at least one matching material!
+  const showGlow = isSelected && (isVessel ? anyMaterialMatched : true);
+  updateGlowMesh(mesh, selectedPartId, showGlow, pulse);
 }
 
 function CameraControls({ viewPreset, resetSignal }) {
@@ -321,11 +377,11 @@ function CameraControls({ viewPreset, resetSignal }) {
   );
 }
 
-function LoadingModel() {
+function LoadingModel({ language = "en" }) {
   return (
     <Html center>
       <div className="whitespace-nowrap rounded-md border border-teal-200 bg-white px-4 py-2 text-sm font-semibold text-teal-800 shadow-sm">
-        Loading kidney model...
+        {translations[language]?.lblLoading ?? "Loading kidney model..."}
       </div>
     </Html>
   );
@@ -337,6 +393,7 @@ function KidneyScene({
   onSelectPart,
   labelsVisible,
   selectedLabelVisible,
+  language,
 }) {
   const { scene } = useGLTF(MODEL_URL);
   const model = useMemo(() => scene.clone(true), [scene]);
@@ -425,6 +482,7 @@ function KidneyScene({
         selectedPartId={selectedPartId}
         activeSide={activeSide}
         onSelectPart={onSelectPart}
+        language={language}
       />
     </>
   );
@@ -439,6 +497,7 @@ export default function KidneyModel({
   selectedLabelVisible,
   resetSignal,
   viewPreset,
+  language = "en",
 }) {
   return (
     <Canvas
@@ -454,13 +513,14 @@ export default function KidneyModel({
       <directionalLight position={[3, 4.5, 5]} intensity={2.25} castShadow />
       <directionalLight position={[-4, 2.5, -3]} intensity={0.9} color="#d7f3ff" />
       <pointLight position={[-3, 1.5, 2]} intensity={0.72} color="#f4d6b3" />
-      <Suspense fallback={<LoadingModel />}>
+      <Suspense fallback={<LoadingModel language={language} />}>
         <KidneyScene
           selectedPartId={selectedPartId}
           activeSide={activeSide}
           onSelectPart={onSelectPart}
           labelsVisible={labelsVisible}
           selectedLabelVisible={selectedLabelVisible}
+          language={language}
         />
       </Suspense>
       <mesh
