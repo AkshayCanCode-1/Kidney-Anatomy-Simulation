@@ -191,17 +191,6 @@ By using this explorer, students will master:
 * **Osmoregulation processes:** Identifying how the kidneys maintain water and salt equilibrium.
 * **Renal circulatory loops:** Understanding why the renal artery carries nitrogenous waste while the renal vein carries clean blood.
 
----
-
-## Future Scope
-
-* **Microscopic Zoom:** Click to dive deep into a 3D simulation of a single **Nephron** showing Bowman’s capsule, PCT, Loop of Henle, and DCT.
-* **Urine Formation Animation:** Dynamic visuals representing urine filtration and concentration flows (particle effects).
-* **Clinical Case Studies:** Real-world biological conditions like kidney stones (renal calculi), glomerulonephritis, and dialysis simulations.
-* **WebXR Support:** Virtual Reality (VR) and Augmented Reality (AR) mode for immersive VR classrooms.
-
----
-
 ## Credits
 
 * **3D Asset Source:** Optimized anatomically-representative urinary system GLB model.
