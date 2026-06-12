@@ -14,7 +14,7 @@ An immersive, touch-friendly, 3D exploration tool built to bridge the gap betwee
 ##  Preview & Demo
 
 ### Application Interface Mockup
-![Kidney Anatomy Explorer Preview(<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/1612284c-2365-4057-9839-365323cf85a0" />)
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/1612284c-2365-4057-9839-365323cf85a0" />
 
 ### Experience It Live
 **Live Demo:** [Coming Soon](https://github.com)  
