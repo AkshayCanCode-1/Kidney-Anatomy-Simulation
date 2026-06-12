@@ -197,7 +197,7 @@ By using this explorer, students will master:
 
 ## Future Scope
 
-* **Microscopic Zoom:** Click to dive deep into a 3D simulation of a single Nephron showing Bowman’s capsule, PCT, Loop of Henle, and DCT.
+* **Microscopic Zoom:** Click to dive deep into a 3D simulation of a single **Nephron** showing Bowman’s capsule, PCT, Loop of Henle, and DCT.
 * **Urine Formation Animation:** Dynamic visuals representing urine filtration and concentration flows (particle effects).
 * **Clinical Case Studies:** Real-world biological conditions like kidney stones (renal calculi), glomerulonephritis, and dialysis simulations.
 * **WebXR Support:** Virtual Reality (VR) and Augmented Reality (AR) mode for immersive VR classrooms.
