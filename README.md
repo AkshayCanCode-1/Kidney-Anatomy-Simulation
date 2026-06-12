@@ -17,10 +17,10 @@ An immersive, touch-friendly, 3D exploration tool built to bridge the gap betwee
 ![Kidney Anatomy Explorer Preview](./preview.png)
 
 ### Experience It Live
-**Live Demo:** [Coming Soon](https://github.com)  
+**Live Demo:** [[Coming Soon](https://github.com)  ](https://kidney-anatomy-simulation.vercel.app/)
 *Or run it locally by following the [Installation & Setup](#installation-and-setup) instructions below.*
 
-<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/1612284c-2365-4057-9839-365323cf85a0" />
+<img width="1919" height="1078" alt="image" src="https://github.com/user-attachments/assets/7b0161d8-af4f-4e71-92c4-c0cf9218ea20" />
 
 ---
 
@@ -217,4 +217,4 @@ By using this explorer, students will master:
 * Feel free to reach out for collaboration or improvements!
 
 ---
-*Developed for biology students and science lovers everywhere.*
+*Developed with 💙 for biology students and science lovers everywhere.*
