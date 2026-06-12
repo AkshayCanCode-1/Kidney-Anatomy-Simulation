@@ -75,10 +75,10 @@ export default function AnatomyLabels({
                     connectorEnd,
                   ]}
                   color={connectorColor}
-                  lineWidth={isSelected ? 1.45 : 1}
+                  lineWidth={isSelected ? 1.6 : 1.2}
                   transparent
-                  opacity={isSelected ? 0.9 : 0.58}
-                  depthTest={false}
+                  opacity={isSelected ? 0.95 : 0.75}
+                  depthTest={true}
                 />
                 <Html
                   center
@@ -87,13 +87,11 @@ export default function AnatomyLabels({
                   zIndexRange={[20, 0]}
                 >
                   <div
-                    className={[
-                      "label-button pointer-events-none whitespace-nowrap border bg-white/95 font-bold text-slate-800 shadow-sm backdrop-blur-sm",
-                      isSelected
-                        ? "rounded-md px-3 py-1.5 text-[13px]"
-                        : "rounded-full px-2 py-1 text-[11px] opacity-85",
-                    ].join(" ")}
-                    style={{ borderColor: isSelected ? part.color : "#cbd5e1" }}
+                    className={`anatomy-label pointer-events-none whitespace-nowrap backdrop-blur-sm ${isSelected ? 'selected' : 'opacity-85'}`}
+                    style={{ 
+                      borderColor: isSelected ? part.color : "rgba(15, 23, 42, 0.12)",
+                      '--part-color': part.color 
+                    }}
                   >
                     {part.shortLabel}
                   </div>
