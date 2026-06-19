@@ -1,5 +1,6 @@
 import { useCallback, useMemo, useRef, useState } from "react";
 import AnatomyInfoPanel from "./AnatomyInfoPanel.jsx";
+import AnatomyOverlay from "./AnatomyOverlay.jsx";
 import GuidedLearning from "./GuidedLearning.jsx";
 import KidneyModel from "./KidneyModel.jsx";
 import KidneyQuiz from "./KidneyQuiz.jsx";
@@ -12,6 +13,7 @@ function getDefaultSideForPart(partId, fallbackSide = "left") {
 
 export default function KidneyExplorer() {
   const viewerRef = useRef(null);
+  const screenCoordsRef = useRef({});
   const { selectedPartId, selectedPart, setSelectedPartId } = useSelectedAnatomyPart();
   const [labelsVisible, setLabelsVisible] = useState(false);
   const [selectedLabelVisible, setSelectedLabelVisible] = useState(false);
@@ -120,11 +122,20 @@ export default function KidneyExplorer() {
             selectedPartId={selectedPartId}
             activeSide={activeSide}
             onSelectPart={selectPart}
-            labelsVisible={labelsVisible}
-            selectedLabelVisible={selectedLabelVisible}
+            onClearSelection={handleEmptyViewerClick}
             resetSignal={resetSignal}
             viewPreset={cameraView}
-            onClearSelection={handleEmptyViewerClick}
+            screenCoordsRef={screenCoordsRef}
+            language={language}
+          />
+          <AnatomyOverlay
+            screenCoordsRef={screenCoordsRef}
+            containerRef={viewerRef}
+            labelsVisible={labelsVisible}
+            selectedLabelVisible={selectedLabelVisible}
+            selectedPartId={selectedPartId}
+            activeSide={activeSide}
+            onSelectPart={selectPart}
             language={language}
           />
 

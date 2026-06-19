@@ -2,7 +2,7 @@ import { Html, OrbitControls, useGLTF } from "@react-three/drei";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Suspense, useEffect, useMemo, useRef } from "react";
 import * as THREE from "three";
-import AnatomyLabels from "./AnatomyLabels.jsx";
+import { ScreenProjector } from "../hooks/useScreenProjection.js";
 import { interactivePartIds, kidneyParts, translations } from "../data/kidneyAnatomyData.js";
 import { matchMeshToAnatomy } from "../data/kidneyMeshMap.js";
 
@@ -13,12 +13,12 @@ const cameraViews = {
     target: [0, -0.12, 0],
   },
   leftKidney: {
-    position: [-1.45, 0.62, 2.05],
-    target: [-0.78, 0.42, 0.08],
-  },
-  rightKidney: {
     position: [1.45, 0.62, 2.05],
     target: [0.78, 0.4, 0.08],
+  },
+  rightKidney: {
+    position: [-1.45, 0.62, 2.05],
+    target: [-0.78, 0.42, 0.08],
   },
   bladder: {
     position: [0, -1.1, 2.45],
@@ -72,9 +72,31 @@ function identifyAnatomyFromObject(object) {
 
   const nameText = names.join(" ");
   const meshMatch = matchMeshToAnatomy(nameText);
+  
+  if (meshMatch.partId && !meshMatch.side) {
+    const lowerName = nameText.toLowerCase();
+    if (lowerName.includes("left") || lowerName.startsWith("l_") || lowerName.includes("_l_") || lowerName.includes("l_renal")) {
+      meshMatch.side = "left";
+    } else if (lowerName.includes("right") || lowerName.startsWith("r_") || lowerName.includes("_r_") || lowerName.includes("r_renal")) {
+      meshMatch.side = "right";
+    }
+  }
+
   if (meshMatch.partId) return meshMatch;
 
-  return { partId: matchPartIdFromText(nameText), side: null };
+  const matchedPartId = matchPartIdFromText(nameText);
+  if (matchedPartId) {
+    const res = { partId: matchedPartId, side: null };
+    const lowerName = nameText.toLowerCase();
+    if (lowerName.includes("left") || lowerName.startsWith("l_") || lowerName.includes("_l_") || lowerName.includes("l_renal")) {
+      res.side = "left";
+    } else if (lowerName.includes("right") || lowerName.startsWith("r_") || lowerName.includes("_r_") || lowerName.includes("r_renal")) {
+      res.side = "right";
+    }
+    return res;
+  }
+
+  return { partId: null, side: null };
 }
 
 function nearestMarkerMatch(point) {
@@ -387,16 +409,51 @@ function LoadingModel({ language = "en" }) {
   );
 }
 
+/** Invisible click-target spheres so users can click near anatomy parts */
+function ClickTargets({ activeSide, onSelectPart, modelScale = 1, modelPosition = [0, 0, 0] }) {
+  return (
+    <>
+      {interactivePartIds.map((partId) => {
+        const part = kidneyParts[partId];
+        let pos = part.labelPosition;
+        if (part.internal && activeSide === "right") {
+          pos = [Math.abs(pos[0]), pos[1], pos[2]];
+        }
+        const clickSide = part.side ?? (part.internal ? activeSide : null);
+        const transformedPos = [
+          pos[0] * modelScale + modelPosition[0],
+          pos[1] * modelScale + modelPosition[1],
+          pos[2] * modelScale + modelPosition[2],
+        ];
+        return (
+          <mesh
+            key={partId}
+            position={transformedPos}
+            onClick={(event) => {
+              event.stopPropagation();
+              onSelectPart(partId, clickSide);
+            }}
+            onPointerOver={() => { document.body.style.cursor = "pointer"; }}
+            onPointerOut={() => { document.body.style.cursor = ""; }}
+          >
+            <sphereGeometry args={[part.markerSize, 24, 24]} />
+            <meshBasicMaterial transparent opacity={0} depthWrite={false} />
+          </mesh>
+        );
+      })}
+    </>
+  );
+}
+
 function KidneyScene({
   selectedPartId,
   activeSide,
   onSelectPart,
-  labelsVisible,
-  selectedLabelVisible,
-  language,
+  screenCoordsRef,
 }) {
   const { scene } = useGLTF(MODEL_URL);
   const model = useMemo(() => scene.clone(true), [scene]);
+  const partMeshesRef = useRef({});
 
   const transform = useMemo(() => {
     const box = new THREE.Box3().setFromObject(model);
@@ -414,31 +471,51 @@ function KidneyScene({
   }, [model]);
 
   useEffect(() => {
+    const meshes = {};
     const discovered = [];
 
     model.traverse((child) => {
       if (!child.isMesh) return;
       cloneAndStoreMaterial(child);
       const match = identifyAnatomyFromObject(child);
-      if (match.partId) child.userData.kidneyPartId = match.partId;
+      if (match.partId) {
+        child.userData.kidneyPartId = match.partId;
+        if (!meshes[match.partId]) meshes[match.partId] = [];
+        meshes[match.partId].push(child);
+      }
       if (match.side) child.userData.kidneyPartSide = match.side;
       if (match.vesselGroup) child.userData.kidneyVesselGroup = match.vesselGroup;
       if (match.sharedVessel) child.userData.kidneySharedVessel = true;
+
+      // Compute bounding box center in model's root space
+      child.geometry.computeBoundingBox();
+      const localCenter = new THREE.Vector3();
+      child.geometry.boundingBox.getCenter(localCenter);
+      child.updateMatrix();
+      
+      // Transform localCenter to model space
+      let parent = child;
+      const modelSpacePos = localCenter.clone();
+      while (parent && parent !== model) {
+        modelSpacePos.applyMatrix4(parent.matrix);
+        parent = parent.parent;
+      }
+
       discovered.push({
         object: child.name || "(unnamed mesh)",
-        material: Array.isArray(child.material)
-          ? child.material.map((material) => material.name).join(", ")
-          : child.material?.name || "",
         matchedPart: match.partId ?? "",
         side: match.side ?? "",
         vesselGroup: match.vesselGroup ?? "",
-        sharedVessel: match.sharedVessel ? "yes" : "",
+        pos: [
+          Number(modelSpacePos.x.toFixed(4)),
+          Number(modelSpacePos.y.toFixed(4)),
+          Number(modelSpacePos.z.toFixed(4))
+        ],
       });
     });
 
-    if (import.meta.env.DEV) {
-      console.info("Kidney GLB mesh inspection", discovered);
-    }
+    partMeshesRef.current = meshes;
+    console.info("KIDNEY MESH CENTERS DATA:", discovered);
   }, [model]);
 
   useFrame(({ clock }) => {
@@ -476,13 +553,19 @@ function KidneyScene({
       >
         <primitive object={model} />
       </group>
-      <AnatomyLabels
-        labelsVisible={labelsVisible}
-        selectedLabelVisible={selectedLabelVisible}
-        selectedPartId={selectedPartId}
+      <ClickTargets
         activeSide={activeSide}
         onSelectPart={onSelectPart}
-        language={language}
+        modelScale={transform.scale}
+        modelPosition={transform.position}
+      />
+      <ScreenProjector
+        screenCoordsRef={screenCoordsRef}
+        activeSide={activeSide}
+        modelScale={transform.scale}
+        modelPosition={transform.position}
+        model={model}
+        partMeshesRef={partMeshesRef}
       />
     </>
   );
@@ -493,10 +576,9 @@ export default function KidneyModel({
   activeSide,
   onSelectPart,
   onClearSelection,
-  labelsVisible,
-  selectedLabelVisible,
   resetSignal,
   viewPreset,
+  screenCoordsRef,
   language = "en",
 }) {
   return (
@@ -518,9 +600,7 @@ export default function KidneyModel({
           selectedPartId={selectedPartId}
           activeSide={activeSide}
           onSelectPart={onSelectPart}
-          labelsVisible={labelsVisible}
-          selectedLabelVisible={selectedLabelVisible}
-          language={language}
+          screenCoordsRef={screenCoordsRef}
         />
       </Suspense>
       <mesh

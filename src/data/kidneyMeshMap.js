@@ -32,21 +32,21 @@ const sharedVesselPatterns = [
 ];
 
 export const kidneyMeshNameMap = [
-  { partId: "cortex", side: "right", patterns: ["l_cortex", "left_cortex", "left_cartical", "l_cartical"] },
-  { partId: "cortex", side: "left", patterns: ["r_cortex", "right_cortex", "right_cartical", "r_cartical"] },
-  { partId: "medulla", side: "right", patterns: ["l_medulla", "left_medulla"] },
-  { partId: "medulla", side: "left", patterns: ["r_medulla", "right_medulla"] },
-  { partId: "medulla", side: "right", patterns: ["l_renal_column", "left_renal_column"] },
-  { partId: "medulla", side: "left", patterns: ["r_renal_column", "right_renal_column"] },
-  { partId: "rightKidney", side: "right", patterns: ["l_capsule", "left_capsule"] },
-  { partId: "leftKidney", side: "left", patterns: ["r_capsule", "right_capsule"] },
-  { partId: "rightUreter", side: "right", patterns: ["l_ureter", "left_ureter", "leftureter"] },
-  { partId: "leftUreter", side: "left", patterns: ["r_ureter", "right_ureter", "rightureter"] },
+  { partId: "cortex", side: "left", patterns: ["l_cortex", "left_cortex", "left_cartical", "l_cartical"] },
+  { partId: "cortex", side: "right", patterns: ["r_cortex", "right_cortex", "right_cartical", "r_cartical"] },
+  { partId: "medulla", side: "left", patterns: ["l_medulla", "left_medulla"] },
+  { partId: "medulla", side: "right", patterns: ["r_medulla", "right_medulla"] },
+  { partId: "medulla", side: "left", patterns: ["l_renal_column", "left_renal_column"] },
+  { partId: "medulla", side: "right", patterns: ["r_renal_column", "right_renal_column"] },
+  { partId: "leftKidney", side: "left", patterns: ["l_capsule", "left_capsule"] },
+  { partId: "rightKidney", side: "right", patterns: ["r_capsule", "right_capsule"] },
+  { partId: "leftUreter", side: "left", patterns: ["l_ureter", "left_ureter", "leftureter"] },
+  { partId: "rightUreter", side: "right", patterns: ["r_ureter", "right_ureter", "rightureter"] },
   { partId: "renalArtery", vesselGroup: "artery", patterns: anatomyMeshGroups.renalArtery },
   { partId: "renalVein", vesselGroup: "vein", patterns: anatomyMeshGroups.renalVein },
   { partId: "urinaryBladder", patterns: ["bladder", "urinary_bladder", "urinarybladder"] },
-  { partId: "rightKidney", side: "right", patterns: ["l_kidney", "left_kidney", "leftkidney"] },
-  { partId: "leftKidney", side: "left", patterns: ["r_kidney", "right_kidney", "rightkidney"] },
+  { partId: "leftKidney", side: "left", patterns: ["l_kidney", "left_kidney", "leftkidney"] },
+  { partId: "rightKidney", side: "right", patterns: ["r_kidney", "right_kidney", "rightkidney"] },
 ];
 
 export function normalizeMeshText(value = "") {
