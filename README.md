@@ -13,14 +13,12 @@ An immersive, touch-friendly, 3D exploration tool built to bridge the gap betwee
 
 ## Preview & Demo
 
-### Application Interface Mockup
-![Kidney Anatomy Explorer Preview](./preview.png)
-
 ### Experience It Live
-**Live Demo:** [Coming Soon](https://github.com)  
+**Live Demo:** https://kidney-anatomy-simulation.vercel.app/
+
 *Or run it locally by following the [Installation & Setup](#installation-and-setup) instructions below.*
 
-<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/1612284c-2365-4057-9839-365323cf85a0" />
+<img width="1919" height="1078" alt="image" src="https://github.com/user-attachments/assets/7b0161d8-af4f-4e71-92c4-c0cf9218ea20" />
 
 ---
 
@@ -193,17 +191,6 @@ By using this explorer, students will master:
 * **Osmoregulation processes:** Identifying how the kidneys maintain water and salt equilibrium.
 * **Renal circulatory loops:** Understanding why the renal artery carries nitrogenous waste while the renal vein carries clean blood.
 
----
-
-## Future Scope
-
-* **Microscopic Zoom:** Click to dive deep into a 3D simulation of a single **Nephron** showing Bowman’s capsule, PCT, Loop of Henle, and DCT.
-* **Urine Formation Animation:** Dynamic visuals representing urine filtration and concentration flows (particle effects).
-* **Clinical Case Studies:** Real-world biological conditions like kidney stones (renal calculi), glomerulonephritis, and dialysis simulations.
-* **WebXR Support:** Virtual Reality (VR) and Augmented Reality (AR) mode for immersive VR classrooms.
-
----
-
 ## Credits
 
 * **3D Asset Source:** Optimized anatomically-representative urinary system GLB model.
@@ -217,4 +204,4 @@ By using this explorer, students will master:
 * Feel free to reach out for collaboration or improvements!
 
 ---
-*Developed for biology students and science lovers everywhere.*
+*Developed with 💙 for biology students and science lovers everywhere.*
