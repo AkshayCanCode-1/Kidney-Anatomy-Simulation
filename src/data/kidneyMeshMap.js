@@ -32,12 +32,12 @@ const sharedVesselPatterns = [
 ];
 
 export const kidneyMeshNameMap = [
-  { partId: "cortex", side: "left", patterns: ["l_cortex", "left_cortex", "left_cartical", "l_cartical"] },
-  { partId: "cortex", side: "right", patterns: ["r_cortex", "right_cortex", "right_cartical", "r_cartical"] },
-  { partId: "medulla", side: "left", patterns: ["l_medulla", "left_medulla"] },
-  { partId: "medulla", side: "right", patterns: ["r_medulla", "right_medulla"] },
-  { partId: "medulla", side: "left", patterns: ["l_renal_column", "left_renal_column"] },
-  { partId: "medulla", side: "right", patterns: ["r_renal_column", "right_renal_column"] },
+  { partId: "leftKidney", side: "left", patterns: ["l_cortex", "left_cortex", "left_cartical", "l_cartical"] },
+  { partId: "rightKidney", side: "right", patterns: ["r_cortex", "right_cortex", "right_cartical", "r_cartical"] },
+  { partId: "leftKidney", side: "left", patterns: ["l_medulla", "left_medulla"] },
+  { partId: "rightKidney", side: "right", patterns: ["r_medulla", "right_medulla"] },
+  { partId: "leftKidney", side: "left", patterns: ["l_renal_column", "left_renal_column"] },
+  { partId: "rightKidney", side: "right", patterns: ["r_renal_column", "right_renal_column"] },
   { partId: "leftKidney", side: "left", patterns: ["l_capsule", "left_capsule"] },
   { partId: "rightKidney", side: "right", patterns: ["r_capsule", "right_capsule"] },
   { partId: "leftUreter", side: "left", patterns: ["l_ureter", "left_ureter", "leftureter"] },

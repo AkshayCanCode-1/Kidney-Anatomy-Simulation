@@ -27,8 +27,6 @@ const cameraViews = {
 };
 
 const PART_PRIORITY = [
-  "cortex",
-  "medulla",
   "leftUreter",
   "rightUreter",
   "renalArtery",
@@ -149,10 +147,10 @@ function forEachMeshMaterial(mesh, callback) {
 
 function isKidneySideSelection(selectedPartId, activeSide, partId, side) {
   if (selectedPartId === "leftKidney") {
-    return side === "left" && ["leftKidney", "cortex", "medulla"].includes(partId);
+    return side === "left" && partId === "leftKidney";
   }
   if (selectedPartId === "rightKidney") {
-    return side === "right" && ["rightKidney", "cortex", "medulla"].includes(partId);
+    return side === "right" && partId === "rightKidney";
   }
   return false;
 }
